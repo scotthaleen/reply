@@ -158,7 +158,7 @@
                  (nrepl.server/start-server
                    :port (Integer/parseInt (str (or port 0)))))
         port (when-not attach
-               (let [^ServerSocket socket (-> server deref :ss)]
+               (let [^ServerSocket socket (-> server :server-socket)]
                  (.getLocalPort socket)))
         url (url-for attach host port)]
     (when server
